@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Styles.css">
+    <title>Remy McCabrey - Portfolio</title>
+    <style>
+      #devlog-content {
+        border: 2px solid #444;
+        background-color: #222;
+        padding: 20px;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation V2 -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="projects.html">R M </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarNavAltMarkup">
+          <div class="navbar-nav navbar-expand-lg pr-2 ">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            <a class="nav-link" href="projects.html">Projects</a>
+            <a class="nav-link" href="games.html">Dev Log</a>
+            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!--Dev log-->
+    <div class="container mt-4">
+      <div class="row">
+        <!-- Left Column: Devlog Content -->
+        <div class="col-md-8">
+          <div id="devlog-content">
+            <h2 id="post-title"></h2>
+            <img id="post-image" class="img-fluid d-none" alt="Devlog Image">
+            <p id="post-text"></p>
+          </div>
+        </div>
+
+        <!-- Right Column: Post Navigation -->
+        <div class="col-md-4">
+          <h4>Devlog Posts</h4>
+          <ul class="list-group" id="post-list">
+            <li class="list-group-item" data-title="The Start, kinda" data-text="Hello this is the first devlog for my game possessed (WIP title). I wish to detail every months worth of work
+            and processes learned however would not consider myself much of a blog  writer and do not intend to make the posts 100% professional and more organic showing the learning process.
+            As you can tell this isnt actually the and therefore i will go into quick detail about the current state of the game and also the games premise. <br> Once hosting  a game upto 9
+            more friends can currently join with steam or a browser, when everyone has joined and in the ready up area the game begins and teleports all players to the map, They also get assigned
+            a role which is either possessed or worker. The possessed must kill all the other players and can sabotage points on the map (Currently 0% feature complete). The workers get assigned
+            a set amount of task, this is where i currently am, The premise from there is they must compete all the tasks without the possessed killing everyone! Although there are no killing
+            features yet i have implemented to an early access ready version; motion matched character system,inventory system, simple interaction ,interactable and task spawns, 3 diffrent
+            simple tasks. All of these things are fully replicated and i am currently working on the task distribution and tracking system, after this i want to focus on making the game as
+            feature complete as possible for the simple gameplay loop, once this is in place id like to polish this version with animations, enviroments and user interfaces so i can release a
+             sort of internal alpha test between some of my gaming buddies. I am currently relying on multiple fab assests for the botched map however for testing and gameplay feedback purposes
+              using these assets can help the early players much more easily fit the mood. Theres still so much more i could mention id like to work on but this is just a base opening introduction
+              showcasing my current project!" value="" data-image="img/possessed_3.jpg">The start, kinda</li>
+            <li class="list-group-item" data-title="Previous projects" data-text="Some of my previous projects include: <br>Cooking simulator with friends that included cooking, chopping, combining,
+            serving mechanics all replicated <br>Zombie FPS game that had simple fps gun and hands player model and would spawn zombies nearby for you to kill, these features were not replicated but
+            a robust system   " data-image="img/kitchen.jpg">previous projects</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function loadPost(title, text, image) {
+        document.getElementById("post-title").textContent = title;
+        document.getElementById("post-text").textContent = text;
+
+        const imgElement = document.getElementById("post-image");
+        if (image) {
+          imgElement.src = image;
+          imgElement.classList.remove("d-none");
+        } else {
+          imgElement.classList.add("d-none");
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function() {
+        const firstPost = document.querySelector("#post-list .list-group-item");
+        loadPost(firstPost.dataset.title, firstPost.dataset.text, firstPost.dataset.image);
+
+        document.querySelectorAll("#post-list .list-group-item").forEach(item => {
+          item.addEventListener("click", function() {
+            loadPost(this.dataset.title, this.dataset.text, this.dataset.image);
+          });
+        });
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
